@@ -30,43 +30,52 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-24 bg-white">
-      <div className="container mx-auto px-4 max-w-3xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-16 text-center">
-          Common Questions About Cornerstone
-        </h2>
+    <section id="faq" className="py-24 bg-gray-50">
+      <div className="container mx-auto px-4">
+        {/* Island Container */}
+        <div className="max-w-3xl mx-auto bg-white rounded-[2.5rem] shadow-xl p-8 md:p-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-navy-900 mb-10 text-center">
+            Common Questions About Cornerstone
+          </h2>
 
-        <div className="space-y-4">
-          {faqs.map((faq, idx) => (
-            <div 
-              key={idx} 
-              className={`border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 ${
-                openIndex === idx ? 'shadow-lg bg-white ring-1 ring-gray-100' : 'bg-white hover:bg-gray-50'
-              }`}
-            >
-              <button
-                className="w-full flex items-center justify-between p-6 text-left transition-colors"
-                onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+          <div className="space-y-3">
+            {faqs.map((faq, idx) => (
+              <div 
+                key={idx} 
+                className="border-b border-gray-100 last:border-0"
               >
-                <span className="font-bold text-navy-900 text-lg pr-8">{faq.question}</span>
-                <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-                  openIndex === idx ? 'bg-brand-blue text-white' : 'bg-gray-100 text-gray-400'
-                }`}>
-                  {openIndex === idx ? (
-                    <ChevronUp className="w-5 h-5" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5" />
-                  )}
+                <button
+                  className="w-full flex items-center justify-between py-5 text-left group"
+                  onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+                >
+                  <span className={`font-bold text-lg transition-colors pr-8 ${
+                    openIndex === idx ? 'text-brand-blue' : 'text-navy-900 group-hover:text-brand-blue'
+                  }`}>
+                    {faq.question}
+                  </span>
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+                    openIndex === idx ? 'bg-brand-blue text-white' : 'bg-gray-100 text-gray-400 group-hover:bg-brand-blue/10 group-hover:text-brand-blue'
+                  }`}>
+                    {openIndex === idx ? (
+                      <ChevronUp className="w-5 h-5" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5" />
+                    )}
+                  </div>
+                </button>
+                
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    openIndex === idx ? 'max-h-48 opacity-100 mb-5' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <p className="text-gray-500 leading-relaxed pr-8">
+                    {faq.answer}
+                  </p>
                 </div>
-              </button>
-              
-              {openIndex === idx && (
-                <div className="p-6 pt-0 text-gray-500 leading-relaxed animate-in slide-in-from-top-2 fade-in duration-200">
-                  {faq.answer}
-                </div>
-              )}
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
