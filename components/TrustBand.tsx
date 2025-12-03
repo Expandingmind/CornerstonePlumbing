@@ -1,4 +1,4 @@
-import { Truck, Zap, Headset, UserCheck } from "lucide-react";
+import { Truck, Zap, Headphones, UserCheck } from "lucide-react";
 
 export default function TrustBand() {
   return (
@@ -62,7 +62,7 @@ export default function TrustBand() {
           {/* Card 3: Concierge (Navy Light/Grey) */}
           <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden bg-[#1a2332] group cursor-default">
              <div className="absolute left-[-20px] bottom-[-20px] opacity-5 group-hover:opacity-10 transition-opacity duration-500">
-              <Headset className="w-64 h-64 text-white" />
+              <Headphones className="w-64 h-64 text-white" />
             </div>
             <div className="absolute inset-0 bg-cover bg-center opacity-40" style={{ backgroundImage: 'url(/placeholder-office.jpg)' }} /> {/* Fallback if no image */}
             
@@ -70,7 +70,7 @@ export default function TrustBand() {
                <div className="mb-auto">
                   {/* Headset Icon Badge */}
                   <div className="w-12 h-12 bg-brand-blue rounded-full flex items-center justify-center mb-6 shadow-lg">
-                     <Headset className="w-6 h-6 text-white" />
+                     <Headphones className="w-6 h-6 text-white" />
                   </div>
                </div>
               <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight max-w-md">
