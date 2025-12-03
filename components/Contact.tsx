@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowRight, Clock, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 
 export default function Contact() {
@@ -13,144 +13,152 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-navy-900 text-white">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <section id="contact" className="py-24 bg-white relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-50 -skew-x-12 translate-x-20 z-0" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Info */}
-          <div className="lg:sticky lg:top-32">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Ready to Fix Your <br />
-              <span className="text-brand-light">Plumbing Problem?</span>
-            </h2>
-            <p className="text-xl text-gray-400 mb-12 max-w-md leading-relaxed">
-              Tell us what’s going on and we’ll reach out quickly. We're here to help, day or night.
-            </p>
+          {/* Left Column: Compact Content */}
+          <div className="lg:w-5/12">
+            <div className="mb-8">
+              <span className="inline-block py-1 px-3 bg-brand-blue/10 text-brand-blue rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+                Fast Response
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4 leading-tight">
+                Ready to Fix Your <br />
+                <span className="text-brand-blue">Plumbing Problem?</span>
+              </h2>
+              <p className="text-gray-500 mb-8 leading-relaxed">
+                Tell us what’s going on and we’ll reach out quickly. We're here to help, day or night.
+              </p>
 
-            <div className="space-y-8">
-              <a href="tel:3058487178" className="flex items-center gap-6 group p-4 rounded-2xl transition-colors hover:bg-white/5 -mx-4">
-                <div className="w-14 h-14 bg-brand-blue rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <Phone className="w-6 h-6 text-white" />
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-green-500" />
+                  <span className="text-navy-900 font-medium">Same-day service availability</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-green-500" />
+                  <span className="text-navy-900 font-medium">Upfront pricing, no hidden fees</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-green-500" />
+                  <span className="text-navy-900 font-medium">Licensed & insured professionals</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <a href="tel:3058487178" className="flex items-center gap-3 p-4 bg-navy-900 rounded-xl hover:bg-navy-800 transition-colors group">
+                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-brand-blue transition-colors">
+                  <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs text-brand-light uppercase font-bold tracking-widest mb-1">CALL US NOW</p>
-                  <p className="text-3xl font-bold group-hover:text-brand-blue transition-colors">(305) 848-7178</p>
+                  <p className="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Call Now</p>
+                  <p className="text-white font-bold text-sm">(305) 848-7178</p>
                 </div>
               </a>
 
-              <a href="mailto:Joseph@thecornerstoneplumbing.com" className="flex items-center gap-6 group p-4 rounded-2xl transition-colors hover:bg-white/5 -mx-4">
-                <div className="w-14 h-14 bg-navy-800 border border-white/10 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <Mail className="w-6 h-6 text-white" />
+              <div className="flex items-center gap-3 p-4 bg-gray-100 rounded-xl">
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
+                  <Clock className="w-5 h-5 text-navy-900" />
                 </div>
                 <div>
-                  <p className="text-xs text-brand-light uppercase font-bold tracking-widest mb-1">EMAIL US</p>
-                  <p className="text-xl font-bold group-hover:text-brand-blue transition-colors break-all">Joseph@thecornerstoneplumbing.com</p>
-                </div>
-              </a>
-
-              <div className="flex items-center gap-6 p-4 -mx-4">
-                <div className="w-14 h-14 bg-navy-800 border border-white/10 rounded-full flex items-center justify-center shadow-lg">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <p className="text-xs text-brand-light uppercase font-bold tracking-widest mb-1">SERVICE AREA</p>
-                  <p className="text-xl font-bold">Miami & Surrounding Areas</p>
+                  <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Hours</p>
+                  <p className="text-navy-900 font-bold text-sm">24/7 Emergency</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Form */}
-          <div className="bg-white text-navy-900 p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
-            {submitted ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-20">
-                <div className="w-24 h-24 bg-green-50 text-green-500 rounded-full flex items-center justify-center mb-8 animate-in zoom-in duration-300">
-                  <span className="text-5xl">✓</span>
-                </div>
-                <h3 className="text-3xl font-bold mb-4 text-navy-900">Request Received!</h3>
-                <p className="text-gray-500 text-lg mb-8">We'll be in touch shortly to confirm your appointment.</p>
-                <button 
-                  onClick={() => setSubmitted(false)}
-                  className="text-brand-blue font-bold hover:text-navy-900 transition-colors flex items-center gap-2"
-                >
-                  Send another request <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider mb-3 text-navy-900">Name</label>
-                    <input type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400" placeholder="Your name" required />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider mb-3 text-navy-900">Phone</label>
-                    <input type="tel" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400" placeholder="(305) 555-0123" required />
-                  </div>
-                </div>
+          {/* Right Column: Floating Form Island */}
+          <div className="lg:w-7/12 w-full">
+            <div className="bg-white p-6 md:p-8 rounded-3xl shadow-xl border border-gray-100 relative">
+              {/* Decorative top strip */}
+              <div className="absolute top-0 left-8 right-8 h-1 bg-brand-blue rounded-b-lg" />
 
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider mb-3 text-navy-900">Email</label>
-                  <input type="email" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400" placeholder="email@example.com" required />
+              {submitted ? (
+                <div className="flex flex-col items-center justify-center text-center py-12">
+                  <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mb-4 animate-in zoom-in duration-300">
+                    <span className="text-3xl">✓</span>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2 text-navy-900">Request Received!</h3>
+                  <p className="text-gray-500 mb-6 text-sm">We'll be in touch shortly to confirm.</p>
+                  <button 
+                    onClick={() => setSubmitted(false)}
+                    className="text-brand-blue font-bold hover:text-navy-900 transition-colors flex items-center gap-2 text-sm"
+                  >
+                    Send another request <ArrowRight className="w-4 h-4" />
+                  </button>
                 </div>
-
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider mb-3 text-navy-900">Service Needed</label>
-                  <div className="relative">
-                    <select className="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all appearance-none cursor-pointer text-navy-900 font-medium">
-                      <option>General Plumbing Repair</option>
-                      <option>Emergency Service</option>
-                      <option>Leak Detection</option>
-                      <option>Drain Cleaning</option>
-                      <option>Water Heater Service</option>
-                      <option>Commercial Plumbing</option>
-                    </select>
-                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                      <ArrowRight className="w-4 h-4 rotate-90" />
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-navy-900">Name</label>
+                      <input type="text" className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400 text-sm" placeholder="Your name" required />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-navy-900">Phone</label>
+                      <input type="tel" className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400 text-sm" placeholder="(305) 555-0123" required />
                     </div>
                   </div>
-                </div>
 
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider mb-3 text-navy-900">Tell us what's wrong</label>
-                  <textarea className="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 h-32 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all resize-none placeholder:text-gray-400" placeholder="Describe your issue..."></textarea>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider mb-4 text-navy-900">Preferred Contact Method</label>
-                  <div className="flex gap-8">
-                    <label className="flex items-center gap-3 cursor-pointer group">
-                      <div className="relative flex items-center justify-center">
-                        <input type="radio" name="contact-method" className="peer sr-only" defaultChecked />
-                        <div className="w-5 h-5 border-2 border-gray-300 rounded-full peer-checked:border-brand-blue peer-checked:bg-brand-blue transition-all"></div>
-                        <div className="absolute w-2 h-2 bg-white rounded-full opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-navy-900">Email</label>
+                      <input type="email" className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400 text-sm" placeholder="email@example.com" required />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-navy-900">Service Needed</label>
+                      <div className="relative">
+                        <select className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all appearance-none cursor-pointer text-navy-900 font-medium text-sm">
+                          <option>General Plumbing Repair</option>
+                          <option>Emergency Service</option>
+                          <option>Leak Detection</option>
+                          <option>Drain Cleaning</option>
+                          <option>Water Heater Service</option>
+                          <option>Commercial Plumbing</option>
+                        </select>
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                          <ArrowRight className="w-3 h-3 rotate-90" />
+                        </div>
                       </div>
-                      <span className="font-medium text-gray-600 group-hover:text-navy-900 transition-colors">Phone</span>
-                    </label>
-                    <label className="flex items-center gap-3 cursor-pointer group">
-                      <div className="relative flex items-center justify-center">
-                        <input type="radio" name="contact-method" className="peer sr-only" />
-                        <div className="w-5 h-5 border-2 border-gray-300 rounded-full peer-checked:border-brand-blue peer-checked:bg-brand-blue transition-all"></div>
-                        <div className="absolute w-2 h-2 bg-white rounded-full opacity-0 peer-checked:opacity-100 transition-opacity"></div>
-                      </div>
-                      <span className="font-medium text-gray-600 group-hover:text-navy-900 transition-colors">Email</span>
-                    </label>
-                    <label className="flex items-center gap-3 cursor-pointer group">
-                      <div className="relative flex items-center justify-center">
-                        <input type="radio" name="contact-method" className="peer sr-only" />
-                        <div className="w-5 h-5 border-2 border-gray-300 rounded-full peer-checked:border-brand-blue peer-checked:bg-brand-blue transition-all"></div>
-                        <div className="absolute w-2 h-2 bg-white rounded-full opacity-0 peer-checked:opacity-100 transition-opacity"></div>
-                      </div>
-                      <span className="font-medium text-gray-600 group-hover:text-navy-900 transition-colors">Text</span>
-                    </label>
+                    </div>
                   </div>
-                </div>
 
-                <button type="submit" className="w-full bg-brand-blue hover:bg-brand-light text-white font-bold py-5 rounded-xl transition-all shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-0.5 mt-4 text-lg">
-                  Request Service
-                </button>
-              </form>
-            )}
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-navy-900">Tell us what's wrong</label>
+                    <textarea className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 h-24 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all resize-none placeholder:text-gray-400 text-sm" placeholder="Describe your issue..."></textarea>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-2">
+                    <div className="flex gap-4">
+                      <label className="flex items-center gap-2 cursor-pointer group">
+                        <input type="radio" name="contact-method" className="peer sr-only" defaultChecked />
+                        <div className="w-4 h-4 border-2 border-gray-300 rounded-full peer-checked:border-brand-blue peer-checked:bg-brand-blue transition-all relative">
+                          <div className="absolute inset-0 m-auto w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+                        </div>
+                        <span className="text-xs font-bold text-gray-500 group-hover:text-navy-900 transition-colors">Phone</span>
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer group">
+                        <input type="radio" name="contact-method" className="peer sr-only" />
+                        <div className="w-4 h-4 border-2 border-gray-300 rounded-full peer-checked:border-brand-blue peer-checked:bg-brand-blue transition-all relative">
+                          <div className="absolute inset-0 m-auto w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+                        </div>
+                        <span className="text-xs font-bold text-gray-500 group-hover:text-navy-900 transition-colors">Email</span>
+                      </label>
+                    </div>
+
+                    <button type="submit" className="bg-brand-blue hover:bg-brand-light text-white font-bold py-3 px-8 rounded-lg transition-all shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-0.5 text-sm">
+                      Request Service
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>
