@@ -39,7 +39,7 @@ export default function BlogPreview() {
           {posts.map((post, idx) => (
             <Link 
               key={idx} 
-              href={`#${post.slug}`} // Placeholder link
+              href="#contact"
               className="group bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
             >
               {/* Image Area - Added to match reference visual richness */}

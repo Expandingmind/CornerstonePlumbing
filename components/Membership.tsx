@@ -43,9 +43,12 @@ export default function Membership() {
               ))}
             </div>
 
-            <button className="w-full bg-brand-blue hover:bg-brand-light text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-blue-500/30 text-lg">
+            <a 
+              href="#contact" 
+              className="block w-full text-center bg-brand-blue hover:bg-brand-light text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-blue-500/30 text-lg"
+            >
               Join the Club
-            </button>
+            </a>
           </div>
         </div>
       </div>

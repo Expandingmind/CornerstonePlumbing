@@ -96,9 +96,11 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Leave a Review Button */}
+        {/* Leave a Review Button - Links to Google Reviews */}
         <a 
-          href="#" 
+          href="https://g.page/r/CornerstonePlumbing/review" 
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-navy-900 hover:bg-brand-blue text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 whitespace-nowrap"
         >
           <MessageSquarePlus className="w-4 h-4" />

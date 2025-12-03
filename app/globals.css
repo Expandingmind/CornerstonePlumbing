@@ -8,6 +8,11 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+/* Enable smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(

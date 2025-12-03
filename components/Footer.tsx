@@ -16,13 +16,13 @@ export default function Footer() {
               The foundation of reliable plumbing in Miami. Family-owned, trustworthy, and ready to serve you 24/7.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-blue flex items-center justify-center transition-colors">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-blue flex items-center justify-center transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-blue flex items-center justify-center transition-colors">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-blue flex items-center justify-center transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-blue flex items-center justify-center transition-colors">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-blue flex items-center justify-center transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
@@ -75,8 +75,8 @@ export default function Footer() {
         <div className="pt-8 border-t border-white/10 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
           <p>&copy; {new Date().getFullYear()} Cornerstone Plumbing. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <Link href="#contact" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="#contact" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

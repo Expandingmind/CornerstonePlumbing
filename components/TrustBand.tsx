@@ -2,7 +2,7 @@ import { Truck, Zap, Headphones, UserCheck } from "lucide-react";
 
 export default function TrustBand() {
   return (
-    <section className="bg-white py-20">
+    <section id="why-cornerstone" className="bg-white py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">Trusted Plumbing Experts in Miami</h2>
