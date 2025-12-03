@@ -10,10 +10,12 @@ import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white selection:bg-brand-blue selection:text-white">
+      <ScrollToTop />
       <Header />
       <Hero />
       <TrustBand />
