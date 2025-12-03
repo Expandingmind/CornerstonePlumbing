@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Star, Facebook } from "lucide-react";
+import { Star } from "lucide-react";
 
 // Simple icons for the review badges to avoid external images for now
 const GoogleIcon = () => (
