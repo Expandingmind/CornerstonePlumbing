@@ -4,8 +4,8 @@ import Link from "next/link";
 const services = [
   { 
     name: "Drain Cleaning", 
-    image: "/images/services/draincleaning.heic", // Using heic might need conversion or specific config, fallback to others if issue
-    fallbackImage: "/images/services/plumbing.png" // Using a generic plumbing one as safe fallback
+    // Switched from HEIC to a safer fallback image because HEIC is not supported by all browsers directly
+    image: "/images/services/plumbing.png", 
   },
   { 
     name: "Commercial Plumbing", 
@@ -17,7 +17,7 @@ const services = [
   },
   { 
     name: "Leak Detection & Repair", 
-    image: "/images/services/Cartridgeinstalls.jpeg", // Using Cartridge install image as it shows plumbing parts
+    image: "/images/services/Cartridgeinstalls.jpeg", 
   },
   { 
     name: "Bathroom Remodeling", 
