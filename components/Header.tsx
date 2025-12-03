@@ -10,66 +10,67 @@ export default function Header() {
   return (
     <>
       {/* Top Notification Bar */}
-      <div className="bg-navy-900 text-white text-xs md:text-sm py-2 px-4 text-center flex justify-between items-center md:justify-center gap-4 relative z-50">
-        <span>Need help now? Same-day plumbing service available in Miami.</span>
+      <div className="bg-navy-800 text-white text-xs py-2.5 px-4 text-center flex justify-center items-center gap-6 relative z-50">
+        <span className="text-gray-300">Need help now? Same-day plumbing service available in Miami.</span>
         <Link 
           href="#contact" 
-          className="hidden md:inline-block underline hover:text-brand-blue transition-colors"
+          className="hidden sm:inline-block text-white font-medium underline underline-offset-2 hover:text-brand-light transition-colors"
         >
           Schedule Service
         </Link>
       </div>
 
       {/* Main Navigation */}
-      <header className="sticky top-0 z-40 w-full bg-navy-900 text-white border-b border-white/10 shadow-lg">
-        <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl md:text-3xl font-bold tracking-tight">
+      <header className="sticky top-0 z-40 w-full bg-navy-900 text-white shadow-xl">
+        <div className="container mx-auto px-4 lg:px-8 h-20 flex items-center justify-between gap-4">
+          {/* Logo - flex-shrink-0 prevents logo from shrinking */}
+          <Link href="/" className="flex-shrink-0">
+            <span className="text-xl lg:text-2xl font-bold tracking-tight whitespace-nowrap">
               Cornerstone <span className="text-brand-blue">Plumbing</span>
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="#services" className="text-sm font-medium hover:text-brand-blue transition-colors">
+          {/* Desktop Nav - Show only on lg (1024px+) screens */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+            <Link href="#services" className="text-sm font-medium text-gray-300 hover:text-white transition-colors whitespace-nowrap">
               Services
             </Link>
-            <Link href="#why-cornerstone" className="text-sm font-medium hover:text-brand-blue transition-colors">
-              Why Cornerstone
+            <Link href="#why-cornerstone" className="text-sm font-medium text-gray-300 hover:text-white transition-colors whitespace-nowrap">
+              Why Us
             </Link>
-            <Link href="#membership" className="text-sm font-medium hover:text-brand-blue transition-colors">
+            <Link href="#membership" className="text-sm font-medium text-gray-300 hover:text-white transition-colors whitespace-nowrap">
               Membership
             </Link>
-            <Link href="#reviews" className="text-sm font-medium hover:text-brand-blue transition-colors">
+            <Link href="#reviews" className="text-sm font-medium text-gray-300 hover:text-white transition-colors whitespace-nowrap">
               Reviews
             </Link>
-            <Link href="#faq" className="text-sm font-medium hover:text-brand-blue transition-colors">
+            <Link href="#faq" className="text-sm font-medium text-gray-300 hover:text-white transition-colors whitespace-nowrap">
               FAQ
             </Link>
           </nav>
 
-          {/* CTA Buttons */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* CTA Buttons - Show only on lg (1024px+) screens */}
+          <div className="hidden lg:flex items-center gap-3 xl:gap-4 flex-shrink-0">
             <a 
               href="tel:3058487178" 
-              className="flex items-center gap-2 text-sm font-semibold hover:text-brand-blue transition-colors"
+              className="flex items-center gap-2 text-sm font-semibold text-white hover:text-brand-light transition-colors whitespace-nowrap px-3 py-2 rounded-lg hover:bg-white/5"
             >
               <Phone className="w-4 h-4" />
               (305) 848-7178
             </a>
             <Link 
               href="#contact" 
-              className="bg-brand-blue hover:bg-brand-light text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              className="bg-brand-blue hover:bg-brand-light text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg shadow-brand-blue/20 hover:shadow-brand-blue/40 transform hover:-translate-y-0.5 whitespace-nowrap"
             >
               Book Service
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle - Show on screens smaller than lg */}
           <button 
-            className="md:hidden p-2 text-white hover:text-brand-blue transition-colors"
+            className="lg:hidden p-2 text-white hover:text-brand-blue transition-colors rounded-lg hover:bg-white/5"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -77,53 +78,57 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-navy-900 border-t border-white/10 p-4 flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-2">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-navy-900 border-t border-white/10 p-6 flex flex-col gap-2 shadow-2xl">
             <Link 
               href="#services" 
-              className="text-lg font-medium py-2 border-b border-white/5 hover:text-brand-blue"
+              className="text-base font-medium py-3 px-4 rounded-xl hover:bg-white/5 hover:text-brand-light transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
               Services
             </Link>
             <Link 
               href="#why-cornerstone" 
-              className="text-lg font-medium py-2 border-b border-white/5 hover:text-brand-blue"
+              className="text-base font-medium py-3 px-4 rounded-xl hover:bg-white/5 hover:text-brand-light transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
               Why Cornerstone
             </Link>
             <Link 
               href="#membership" 
-              className="text-lg font-medium py-2 border-b border-white/5 hover:text-brand-blue"
+              className="text-base font-medium py-3 px-4 rounded-xl hover:bg-white/5 hover:text-brand-light transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
               Membership
             </Link>
             <Link 
               href="#reviews" 
-              className="text-lg font-medium py-2 border-b border-white/5 hover:text-brand-blue"
+              className="text-base font-medium py-3 px-4 rounded-xl hover:bg-white/5 hover:text-brand-light transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
               Reviews
             </Link>
             <Link 
               href="#faq" 
-              className="text-lg font-medium py-2 border-b border-white/5 hover:text-brand-blue"
+              className="text-base font-medium py-3 px-4 rounded-xl hover:bg-white/5 hover:text-brand-light transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
               FAQ
             </Link>
-            <div className="flex flex-col gap-3 mt-2">
+            
+            {/* Divider */}
+            <div className="h-px bg-white/10 my-3" />
+            
+            <div className="flex flex-col gap-3">
               <a 
                 href="tel:3058487178" 
-                className="flex items-center justify-center gap-2 text-white font-semibold py-2 bg-white/10 rounded-lg"
+                className="flex items-center justify-center gap-2 text-white font-semibold py-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-5 h-5 text-brand-blue" />
                 (305) 848-7178
               </a>
               <Link 
                 href="#contact" 
-                className="bg-brand-blue hover:bg-brand-light text-white px-5 py-3 rounded-lg text-center font-bold"
+                className="bg-brand-blue hover:bg-brand-light text-white py-3.5 rounded-xl text-center font-bold shadow-lg shadow-brand-blue/20 transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Book Service
