@@ -2,42 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
-const services = [
-  { 
-    name: "Drain Cleaning", 
-    image: "/images/services/plumbing.png", 
-  },
-  { 
-    name: "Commercial Plumbing", 
-    image: "/images/services/commercialplumbing2.png",
-  },
-  { 
-    name: "Water Heater Replacement", 
-    image: "/images/services/waterheater.jpeg",
-  },
-  { 
-    name: "Leak Detection & Repair", 
-    image: "/images/services/Cartridgeinstalls.jpeg", 
-  },
-  { 
-    name: "Bathroom Remodeling", 
-    image: "/images/services/bathroomremodeling.jpeg",
-  },
-  { 
-    name: "Toilet Repair", 
-    image: "/images/services/toilet.jpeg",
-  },
-  { 
-    name: "Shower Services", 
-    image: "/images/services/shower.jpeg",
-  },
-  { 
-    name: "Camera Inspections", 
-    image: "/images/services/camerainspections.jpeg",
-  }
-];
+import { services } from "@/data/services";
 
 export default function Services() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.05 });
@@ -57,9 +24,10 @@ export default function Services() {
         {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {services.map((service, idx) => (
-            <div 
-              key={idx} 
-              className={`bg-white rounded-2xl overflow-hidden flex flex-col shadow-lg group h-[320px] cursor-pointer relative card-hover card-image-zoom
+            <Link 
+              key={idx}
+              href={`/services/${service.slug}`}
+              className={`bg-white rounded-2xl overflow-hidden flex flex-col shadow-lg group h-[320px] relative card-hover card-image-zoom
                 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
               style={{ transitionDelay: `${idx * 75 + 200}ms` }}
             >
@@ -73,7 +41,14 @@ export default function Services() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 />
                 {/* Gradient Overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* "View Service" overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="bg-white text-navy-900 px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    View Service <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
               </div>
               
               {/* Text Label Area */}
@@ -82,7 +57,7 @@ export default function Services() {
                   {service.name}
                 </h3>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -95,7 +70,7 @@ export default function Services() {
             href="#contact" 
             className="btn-primary inline-block bg-brand-blue hover:bg-brand-light text-white font-bold py-3 px-10 rounded-full shadow-lg"
           >
-            More Services
+            Request Any Service
           </Link>
         </div>
       </div>
