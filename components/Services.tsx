@@ -1,56 +1,39 @@
-import { 
-  Droplets, 
-  Flame, 
-  Pipette, 
-  Wrench, 
-  Home, 
-  PenTool as Tool, 
-  Camera, 
-  Filter,
-  AlertCircle
-} from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const services = [
   { 
     name: "Drain Cleaning", 
-    icon: <Droplets className="w-16 h-16 text-brand-blue" />,
-    description: "Clear stubborn clogs fast."
+    image: "/images/services/draincleaning.heic", // Using heic might need conversion or specific config, fallback to others if issue
+    fallbackImage: "/images/services/plumbing.png" // Using a generic plumbing one as safe fallback
   },
   { 
-    name: "Sewer Line Repair", 
-    icon: <Wrench className="w-16 h-16 text-gray-400" />,
-    description: "Expert sewer line solutions."
+    name: "Commercial Plumbing", 
+    image: "/images/services/commercialplumbing2.png",
   },
   { 
     name: "Water Heater Replacement", 
-    icon: <Flame className="w-16 h-16 text-red-400" />, // Little color variation for visual interest like screenshot
-    description: "Hot water when you need it."
+    image: "/images/services/waterheater.jpeg",
   },
   { 
-    name: "Water Leak Detection", 
-    icon: <Pipette className="w-16 h-16 text-purple-400" />, // Mimicking the thermal cam look
-    description: "Find hidden leaks quickly."
+    name: "Leak Detection & Repair", 
+    image: "/images/services/Cartridgeinstalls.jpeg", // Using Cartridge install image as it shows plumbing parts
   },
   { 
-    name: "Whole Home Water Filtration", 
-    icon: <Filter className="w-16 h-16 text-blue-400" />, // Cylinder look
-    description: "Pure water for your family."
+    name: "Bathroom Remodeling", 
+    image: "/images/services/bathroomremodeling.jpeg",
   },
   { 
-    name: "Toilet Repair and Rebuild", 
-    icon: <Tool className="w-16 h-16 text-gray-600" />,
-    description: "Stop the running and leaking."
+    name: "Toilet Repair", 
+    image: "/images/services/toilet.jpeg",
   },
   { 
-    name: "Water Line Repair", 
-    icon: <Droplets className="w-16 h-16 text-brand-light" />, // Copper pipe color approx
-    description: "Fix low pressure and leaks."
+    name: "Shower Services", 
+    image: "/images/services/shower.jpeg",
   },
   { 
-    name: "Gas Line Repair", 
-    icon: <AlertCircle className="w-16 h-16 text-yellow-500" />, // Valve look
-    description: "Safety first gas services."
+    name: "Camera Inspections", 
+    image: "/images/services/camerainspections.jpeg",
   }
 ];
 
@@ -67,16 +50,24 @@ export default function Services() {
           {services.map((service, idx) => (
             <div 
               key={idx} 
-              className="bg-white rounded-2xl overflow-hidden flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group h-[280px] cursor-pointer"
+              className="bg-white rounded-2xl overflow-hidden flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group h-[320px] cursor-pointer relative"
             >
-              {/* Icon Area - Centered & Large */}
-              <div className="flex-grow flex items-center justify-center p-8 bg-white group-hover:scale-110 transition-transform duration-500">
-                {service.icon}
+              {/* Image Area - Covers most of card */}
+              <div className="relative h-[240px] w-full bg-gray-100">
+                <Image
+                  src={service.image}
+                  alt={service.name}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+                {/* Gradient Overlay for better text readability if needed later, keeping clean for now matching screenshot style */}
+                <div className="absolute inset-0 bg-navy-900/0 group-hover:bg-navy-900/10 transition-colors duration-300" />
               </div>
               
               {/* Text Label Area - Bottom Strip */}
-              <div className="bg-brand-blue/5 border-t border-brand-blue/10 p-4 h-20 flex items-center">
-                <h3 className="text-navy-900 font-bold text-lg leading-tight">
+              <div className="bg-white p-5 h-[80px] flex items-center justify-center relative z-10">
+                <h3 className="text-navy-900 font-bold text-lg leading-tight text-center">
                   {service.name}
                 </h3>
               </div>
