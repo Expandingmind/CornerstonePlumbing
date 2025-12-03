@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Minus, MessageCircleQuestion, Phone, HelpCircle } from "lucide-react";
+import { Plus, Minus, MessageSquare, Phone, HelpCircle } from "lucide-react";
 import Link from "next/link";
 
 export default function FAQ() {
@@ -59,7 +59,7 @@ export default function FAQ() {
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-brand-blue rounded-xl flex items-center justify-center flex-shrink-0">
-                    <MessageCircleQuestion className="w-6 h-6 text-white" />
+                    <MessageSquare className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-white font-bold mb-1">Still have questions?</h3>
