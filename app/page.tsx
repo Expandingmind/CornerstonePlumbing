@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import TrustBand from "@/components/TrustBand";
 import Intro from "@/components/Intro";
 import Testimonials from "@/components/Testimonials";
-import WhyChooseUs from "@/components/WhyChooseUs";
 import Services from "@/components/Services";
 import Membership from "@/components/Membership";
 import BlogPreview from "@/components/BlogPreview";
@@ -20,7 +19,7 @@ export default function Home() {
       <TrustBand />
       <Intro />
       <Testimonials />
-      <WhyChooseUs />
+      {/* Removed WhyChooseUs as it was redundant with TrustBand */}
       <Services />
       <Membership />
       <BlogPreview />
