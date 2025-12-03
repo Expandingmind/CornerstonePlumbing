@@ -5,7 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Platform Icons
 const GoogleIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="currentColor">
     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
@@ -14,13 +14,13 @@ const GoogleIcon = () => (
 );
 
 const YelpIcon = () => (
-  <svg className="w-5 h-5 text-red-600" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-4 h-4 md:w-5 md:h-5 text-red-600" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
   </svg>
 );
 
 const FacebookIcon = () => (
-  <svg className="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-4 h-4 md:w-5 md:h-5 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
   </svg>
 );
@@ -86,19 +86,19 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id="reviews" className="py-20 bg-white overflow-hidden" ref={ref}>
+    <section id="reviews" className="py-12 md:py-20 bg-white overflow-hidden" ref={ref}>
       {/* Header */}
       <div 
-        className={`container mx-auto px-4 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 transition-all duration-700
+        className={`container mx-auto px-4 mb-8 md:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 transition-all duration-700
           ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       >
         <div className="max-w-2xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-navy-900">Why Homeowners Love Cornerstone</h2>
-          <div className="text-gray-600 text-lg flex flex-wrap items-center gap-2">
+          <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 text-navy-900">Why Homeowners Love Cornerstone</h2>
+          <div className="text-gray-600 text-sm md:text-lg flex flex-wrap items-center gap-2">
             <span className="font-bold text-navy-900">112 reviews</span> with an overall 4.9 star ranking
             <div className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((star) => (
-                <Star key={star} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                <Star key={star} className="w-3 h-3 md:w-4 md:h-4 text-yellow-400 fill-yellow-400" />
               ))}
             </div>
           </div>
@@ -109,9 +109,9 @@ export default function Testimonials() {
           href="https://g.page/r/CornerstonePlumbing/review" 
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-primary inline-flex items-center gap-2 bg-navy-900 hover:bg-brand-blue text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md whitespace-nowrap"
+          className="btn-primary inline-flex items-center gap-2 bg-navy-900 hover:bg-brand-blue text-white px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-bold shadow-md whitespace-nowrap self-start md:self-auto"
         >
-          <MessageSquarePlus className="w-4 h-4" />
+          <MessageSquarePlus className="w-3.5 h-3.5 md:w-4 md:h-4" />
           Leave a Review
         </a>
       </div>
@@ -122,59 +122,59 @@ export default function Testimonials() {
           ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       >
         {/* Gradient Masks for smooth fade effect */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-        <div className="flex gap-6 animate-marquee w-max px-4">
+        <div className="flex gap-3 md:gap-6 animate-marquee w-max px-2 md:px-4">
           {/* Render reviews twice for seamless loop */}
           {[...reviews, ...reviews].map((review, idx) => (
             <div 
               key={idx} 
-              className="w-[260px] md:w-[300px] bg-navy-900 p-6 rounded-3xl flex-shrink-0 relative group cursor-default shadow-xl card-hover card-border-glow"
+              className="w-[180px] md:w-[280px] bg-navy-900 p-4 md:p-6 rounded-2xl md:rounded-3xl flex-shrink-0 relative group cursor-default shadow-xl card-hover card-border-glow"
             >
               {/* Shimmer effect on hover */}
-              <div className="absolute inset-0 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden">
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 animate-shimmer transition-opacity duration-500" />
               </div>
 
               {/* Top Row: Platform Icon & Avatar */}
-              <div className="flex justify-between items-start mb-4 relative z-10">
-                <div className="p-1.5 bg-white rounded-full shadow-sm transform group-hover:scale-110 transition-transform duration-300">
+              <div className="flex justify-between items-start mb-2 md:mb-4 relative z-10">
+                <div className="p-1 md:p-1.5 bg-white rounded-full shadow-sm transform group-hover:scale-110 transition-transform duration-300">
                   {review.platform === 'google' && <GoogleIcon />}
                   {review.platform === 'yelp' && <YelpIcon />}
                   {review.platform === 'facebook' && <FacebookIcon />}
                 </div>
-                <div className="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center text-white text-xs font-bold border border-white/10">
+                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-navy-800 flex items-center justify-center text-white text-[10px] md:text-xs font-bold border border-white/10">
                   {review.avatar}
                 </div>
               </div>
 
               {/* Stars */}
-              <div className="flex gap-0.5 text-white mb-4 relative z-10">
+              <div className="flex gap-0.5 text-white mb-2 md:mb-4 relative z-10">
                 {[...Array(review.stars)].map((_, i) => (
                   <Star 
                     key={i} 
-                    className="w-3 h-3 fill-white text-white transition-transform duration-300"
+                    className="w-2.5 h-2.5 md:w-3 md:h-3 fill-white text-white transition-transform duration-300"
                     style={{ transitionDelay: `${i * 50}ms` }}
                   />
                 ))}
               </div>
 
               {/* Name & Role */}
-              <div className="relative z-10 mb-3">
-                <h3 className="font-bold text-base text-white leading-tight mb-0.5">{review.name}</h3>
+              <div className="relative z-10 mb-2 md:mb-3">
+                <h3 className="font-bold text-xs md:text-base text-white leading-tight mb-0.5 line-clamp-1">{review.name}</h3>
                 {review.role && (
-                  <p className="text-[10px] text-brand-blue font-bold uppercase tracking-wider">{review.role}</p>
+                  <p className="text-[8px] md:text-[10px] text-brand-blue font-bold uppercase tracking-wider line-clamp-1">{review.role}</p>
                 )}
               </div>
 
               {/* Text */}
-              <p className="text-gray-300 text-sm leading-relaxed mb-4 relative z-10 line-clamp-4">
+              <p className="text-gray-300 text-[11px] md:text-sm leading-relaxed mb-2 md:mb-4 relative z-10 line-clamp-3 md:line-clamp-4">
                 &ldquo;{review.text}&rdquo;
               </p>
 
               {/* Date */}
-              <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest border-t border-white/10 pt-3 relative z-10">
+              <div className="text-[8px] md:text-[10px] text-gray-500 font-bold uppercase tracking-widest border-t border-white/10 pt-2 md:pt-3 relative z-10">
                 {review.date}
               </div>
             </div>
