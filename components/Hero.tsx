@@ -3,7 +3,7 @@ import { Phone, Star, Facebook } from "lucide-react";
 
 // Simple icons for the review badges to avoid external images for now
 const GoogleIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
@@ -12,7 +12,7 @@ const GoogleIcon = () => (
 );
 
 const YelpIcon = () => (
-  <svg className="w-5 h-5 text-red-600" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-6 h-6 text-red-600" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
   </svg>
 );
@@ -20,7 +20,7 @@ const YelpIcon = () => (
 export default function Hero() {
   return (
     <section className="relative bg-navy-900 overflow-hidden pt-12 pb-20 md:pt-32 md:pb-48 min-h-[85vh] flex items-center">
-      {/* Large Abstract Circle/Shape Background - mimicking the reference curve */}
+      {/* Large Abstract Circle/Shape Background */}
       <div className="absolute top-0 right-0 w-[140vh] h-[140vh] bg-brand-blue rounded-full opacity-100 z-0 transform translate-x-[30%] -translate-y-[20%] md:translate-x-[15%] md:-translate-y-[25%]" />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10 h-full">
@@ -41,7 +41,7 @@ export default function Hero() {
             way. Your peace of mind is our goal.
           </p>
           
-          <div className="flex flex-wrap gap-4 mb-16">
+          <div className="flex flex-wrap gap-4 mb-12">
             <Link 
               href="#contact" 
               className="bg-brand-blue hover:bg-brand-light text-white px-10 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
@@ -50,16 +50,15 @@ export default function Hero() {
             </Link>
           </div>
 
-          {/* Review Badges Row - mimicking the reference layout */}
-          <div className="flex flex-wrap items-center gap-6 md:gap-12 pt-4">
+          <div className="flex flex-wrap items-center gap-8 md:gap-12 pt-4 border-t border-white/10">
             {/* Google */}
             <div className="flex items-center gap-3">
               <GoogleIcon />
               <div>
-                <div className="flex items-center gap-1 text-white text-sm font-bold">
-                  5.0 <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                <div className="flex items-center gap-1 text-white text-base font-bold">
+                  5.0 <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                 </div>
-                <div className="text-xs text-gray-400">514 Reviews</div>
+                <div className="text-sm text-gray-400">112 Reviews</div>
               </div>
             </div>
 
@@ -67,32 +66,21 @@ export default function Hero() {
             <div className="flex items-center gap-3">
               <YelpIcon />
               <div>
-                <div className="flex items-center gap-1 text-white text-sm font-bold">
-                  4.8 <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                <div className="flex items-center gap-1 text-white text-base font-bold">
+                  4.8 <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                 </div>
-                <div className="text-xs text-gray-400">34 Reviews</div>
+                <div className="text-sm text-gray-400">34 Reviews</div>
               </div>
             </div>
 
             {/* Thumbtack (using a simple T or icon) */}
             <div className="flex items-center gap-3">
-              <div className="w-5 h-5 bg-white text-blue-500 font-bold flex items-center justify-center rounded-sm text-xs">T</div>
+              <div className="w-6 h-6 bg-white text-[#29A5E0] font-bold flex items-center justify-center rounded-full text-xs">T</div>
               <div>
-                <div className="flex items-center gap-1 text-white text-sm font-bold">
-                  5.0 <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                <div className="flex items-center gap-1 text-white text-base font-bold">
+                  5.0 <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                 </div>
-                <div className="text-xs text-gray-400">53 Reviews</div>
-              </div>
-            </div>
-
-            {/* Facebook */}
-            <div className="flex items-center gap-3">
-              <Facebook className="w-5 h-5 text-blue-500 fill-current" />
-              <div>
-                <div className="text-white text-sm font-bold">
-                  100% recommended
-                </div>
-                <div className="text-xs text-gray-400">16 Reviews</div>
+                <div className="text-sm text-gray-400">53 Reviews</div>
               </div>
             </div>
           </div>
