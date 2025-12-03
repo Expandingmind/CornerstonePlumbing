@@ -17,10 +17,10 @@ export default function CallToAction() {
           {/* Left Content */}
           <div className="max-w-xl">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Ready to get your Gas Leak Detection started?
+              Need A Water Heater Replacement?
             </h2>
             <p className="text-white/90 text-lg md:text-xl mb-10 leading-relaxed">
-              Sniff out trouble before it blows! Keep your nose safe.
+              Don't get stuck in the cold. Upgrade to a modern, efficient system today.
             </p>
             
             <div className="flex flex-wrap gap-4">
@@ -39,16 +39,15 @@ export default function CallToAction() {
             </div>
           </div>
 
-          {/* Right Image - Van */}
+          {/* Right Image - Water Heater */}
           <div className="relative h-[300px] lg:h-[500px] flex items-center justify-center lg:justify-end">
-            {/* Using the commercial plumbing image as a placeholder for the van if a specific van image isn't provided yet */}
-            {/* Ideally, replace "/images/services/commercialplumbing2.png" with a dedicated transparent van PNG */}
-            <div className="relative w-full max-w-2xl h-full">
+            <div className="relative w-full max-w-lg h-full">
+               {/* Using the uploaded water heater image with a nice border radius and shadow */}
                <Image 
-                 src="/images/services/commercialplumbing2.png" 
-                 alt="Cornerstone Plumbing Van" 
+                 src="/images/services/waterheater2.jpeg" 
+                 alt="Water Heater Installation" 
                  fill
-                 className="object-contain object-right drop-shadow-2xl transform translate-y-6 hover:scale-105 transition-transform duration-700"
+                 className="object-cover rounded-3xl shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-700 border-4 border-white/20"
                  sizes="(max-width: 768px) 100vw, 50vw"
                />
             </div>
