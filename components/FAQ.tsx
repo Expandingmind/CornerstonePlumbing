@@ -30,29 +30,38 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-white">
+    <section id="faq" className="py-24 bg-white">
       <div className="container mx-auto px-4 max-w-3xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-12 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-16 text-center">
           Common Questions About Cornerstone
         </h2>
 
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
-            <div key={idx} className="border border-gray-200 rounded-xl overflow-hidden">
+            <div 
+              key={idx} 
+              className={`border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 ${
+                openIndex === idx ? 'shadow-lg bg-white ring-1 ring-gray-100' : 'bg-white hover:bg-gray-50'
+              }`}
+            >
               <button
-                className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition-colors"
+                className="w-full flex items-center justify-between p-6 text-left transition-colors"
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
               >
                 <span className="font-bold text-navy-900 text-lg pr-8">{faq.question}</span>
-                {openIndex === idx ? (
-                  <ChevronUp className="w-5 h-5 text-brand-blue flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                )}
+                <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+                  openIndex === idx ? 'bg-brand-blue text-white' : 'bg-gray-100 text-gray-400'
+                }`}>
+                  {openIndex === idx ? (
+                    <ChevronUp className="w-5 h-5" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5" />
+                  )}
+                </div>
               </button>
               
               {openIndex === idx && (
-                <div className="p-6 pt-0 bg-white text-gray-600 leading-relaxed animate-in slide-in-from-top-2">
+                <div className="p-6 pt-0 text-gray-500 leading-relaxed animate-in slide-in-from-top-2 fade-in duration-200">
                   {faq.answer}
                 </div>
               )}
@@ -63,4 +72,3 @@ export default function FAQ() {
     </section>
   );
 }
-
