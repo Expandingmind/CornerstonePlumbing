@@ -9,6 +9,7 @@ import Membership from "@/components/Membership";
 import BlogPreview from "@/components/BlogPreview";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
+import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -25,8 +26,8 @@ export default function Home() {
       <BlogPreview />
       <FAQ />
       <Contact />
+      <CallToAction />
       <Footer />
     </main>
   );
 }
-
