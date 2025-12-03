@@ -1,10 +1,12 @@
 "use client";
 
-import { Phone, Mail, MapPin, ArrowRight, Clock, CheckCircle2 } from "lucide-react";
+import { Phone, Clock, ArrowRight, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white relative overflow-hidden">
+    <section id="contact" className="py-24 bg-white relative overflow-hidden" ref={ref}>
       {/* Background decorations */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-50 -skew-x-12 translate-x-20 z-0" />
       
@@ -21,37 +23,54 @@ export default function Contact() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Compact Content */}
-          <div className="lg:w-5/12">
+          <div 
+            className={`lg:w-5/12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
+          >
             <div className="mb-8">
-              <span className="inline-block py-1 px-3 bg-brand-blue/10 text-brand-blue rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+              <span 
+                className={`inline-block py-1 px-3 bg-brand-blue/10 text-brand-blue rounded-full text-xs font-bold uppercase tracking-wider mb-4 transition-all duration-700 delay-100
+                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              >
                 Fast Response
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4 leading-tight">
+              <h2 
+                className={`text-3xl md:text-4xl font-bold text-navy-900 mb-4 leading-tight transition-all duration-700 delay-200
+                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              >
                 Ready to Fix Your <br />
                 <span className="text-brand-blue">Plumbing Problem?</span>
               </h2>
-              <p className="text-gray-500 mb-8 leading-relaxed">
-                Tell us what’s going on and we’ll reach out quickly. We're here to help, day or night.
+              <p 
+                className={`text-gray-500 mb-8 leading-relaxed transition-all duration-700 delay-300
+                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              >
+                Tell us what&apos;s going on and we&apos;ll reach out quickly. We&apos;re here to help, day or night.
               </p>
 
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-green-500" />
-                  <span className="text-navy-900 font-medium">Same-day service availability</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-green-500" />
-                  <span className="text-navy-900 font-medium">Upfront pricing, no hidden fees</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-green-500" />
-                  <span className="text-navy-900 font-medium">Licensed & insured professionals</span>
-                </div>
+                {[
+                  "Same-day service availability",
+                  "Upfront pricing, no hidden fees",
+                  "Licensed & insured professionals"
+                ].map((item, idx) => (
+                  <div 
+                    key={idx}
+                    className={`flex items-center gap-3 transition-all duration-700
+                      ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
+                    style={{ transitionDelay: `${idx * 100 + 400}ms` }}
+                  >
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <span className="text-navy-900 font-medium">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <a href="tel:3058487178" className="flex items-center gap-3 p-4 bg-navy-900 rounded-xl hover:bg-navy-800 transition-colors group">
+            <div 
+              className={`grid grid-cols-2 gap-4 transition-all duration-700 delay-700
+                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            >
+              <a href="tel:3058487178" className="flex items-center gap-3 p-4 bg-navy-900 rounded-xl hover:bg-navy-800 transition-all group card-hover">
                 <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-brand-blue transition-colors">
                   <Phone className="w-5 h-5 text-white" />
                 </div>
@@ -74,23 +93,26 @@ export default function Contact() {
           </div>
 
           {/* Right Column: Floating Form Island */}
-          <div className="lg:w-7/12 w-full">
-            <div className="bg-white p-6 md:p-8 rounded-3xl shadow-xl border border-gray-100 relative">
+          <div 
+            className={`lg:w-7/12 w-full transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
+          >
+            <div className="bg-white p-6 md:p-8 rounded-3xl shadow-xl border border-gray-100 relative card-hover">
               {/* Decorative top strip */}
               <div className="absolute top-0 left-8 right-8 h-1 bg-brand-blue rounded-b-lg" />
 
               {submitted ? (
-                <div className="flex flex-col items-center justify-center text-center py-12">
-                  <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mb-4 animate-in zoom-in duration-300">
+                <div className="flex flex-col items-center justify-center text-center py-12 animate-modal-in">
+                  <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mb-4 animate-pulse-glow">
                     <span className="text-3xl">✓</span>
                   </div>
                   <h3 className="text-2xl font-bold mb-2 text-navy-900">Request Received!</h3>
-                  <p className="text-gray-500 mb-6 text-sm">We'll be in touch shortly to confirm.</p>
+                  <p className="text-gray-500 mb-6 text-sm">We&apos;ll be in touch shortly to confirm.</p>
                   <button 
                     onClick={() => setSubmitted(false)}
-                    className="text-brand-blue font-bold hover:text-navy-900 transition-colors flex items-center gap-2 text-sm"
+                    className="text-brand-blue font-bold hover:text-navy-900 transition-colors flex items-center gap-2 text-sm group"
                   >
-                    Send another request <ArrowRight className="w-4 h-4" />
+                    Send another request 
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               ) : (
@@ -98,18 +120,33 @@ export default function Contact() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-navy-900">Name</label>
-                      <input type="text" className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400 text-sm" placeholder="Your name" required />
+                      <input 
+                        type="text" 
+                        className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400 text-sm" 
+                        placeholder="Your name" 
+                        required 
+                      />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-navy-900">Phone</label>
-                      <input type="tel" className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400 text-sm" placeholder="(305) 555-0123" required />
+                      <input 
+                        type="tel" 
+                        className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400 text-sm" 
+                        placeholder="(305) 555-0123" 
+                        required 
+                      />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-navy-900">Email</label>
-                      <input type="email" className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400 text-sm" placeholder="email@example.com" required />
+                      <input 
+                        type="email" 
+                        className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-gray-400 text-sm" 
+                        placeholder="email@example.com" 
+                        required 
+                      />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-navy-900">Service Needed</label>
@@ -130,8 +167,11 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-navy-900">Tell us what's wrong</label>
-                    <textarea className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 h-24 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all resize-none placeholder:text-gray-400 text-sm" placeholder="Describe your issue..."></textarea>
+                    <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-navy-900">Tell us what&apos;s wrong</label>
+                    <textarea 
+                      className="w-full bg-gray-50 border-0 rounded-lg px-4 py-3 h-24 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all resize-none placeholder:text-gray-400 text-sm" 
+                      placeholder="Describe your issue..."
+                    ></textarea>
                   </div>
 
                   <div className="flex items-center justify-between pt-2">
@@ -152,7 +192,10 @@ export default function Contact() {
                       </label>
                     </div>
 
-                    <button type="submit" className="bg-brand-blue hover:bg-brand-light text-white font-bold py-3 px-8 rounded-lg transition-all shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-0.5 text-sm">
+                    <button 
+                      type="submit" 
+                      className="btn-primary bg-brand-blue hover:bg-brand-light text-white font-bold py-3 px-8 rounded-lg shadow-lg text-sm"
+                    >
                       Request Service
                     </button>
                   </div>

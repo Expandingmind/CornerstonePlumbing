@@ -8,7 +8,9 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-/* Enable smooth scrolling for anchor links */
+/* ============================
+   SMOOTH SCROLLING
+   ============================ */
 html {
   scroll-behavior: smooth;
 }
@@ -23,7 +25,35 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-/* Custom scrollbar for reviews if needed */
+/* ============================
+   CUSTOM SCROLLBAR (Navy Theme)
+   ============================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1120;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3B82F6;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #60A5FA;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3B82F6 #0B1120;
+}
+
+/* ============================
+   HIDE SCROLLBAR UTILITY
+   ============================ */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -32,3 +62,281 @@ body {
   scrollbar-width: none;
 }
 
+/* ============================
+   BUTTON ANIMATIONS
+   ============================ */
+.btn-primary {
+  @apply transition-all duration-300;
+}
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary {
+  @apply border-2 border-white/30 transition-all duration-300;
+}
+.btn-secondary:hover {
+  @apply border-white bg-white/10;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* ============================
+   CARD HOVER EFFECTS
+   ============================ */
+.card-hover {
+  @apply transition-all duration-500;
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.card-image-zoom img {
+  @apply transition-transform duration-700 ease-out;
+}
+.card-image-zoom:hover img {
+  transform: scale(1.1);
+}
+
+/* Gradient overlay reveal on hover */
+.card-gradient-reveal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  transition: opacity 500ms;
+}
+.card-gradient-reveal:hover::before {
+  opacity: 1;
+}
+
+/* Border glow on hover */
+.card-border-glow {
+  @apply border border-white/10 transition-all duration-300;
+}
+.card-border-glow:hover {
+  @apply border-white/30;
+}
+
+/* ============================
+   FLOAT ANIMATION
+   ============================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ============================
+   SHIMMER/LOADING EFFECT
+   ============================ */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================
+   PULSE GLOW
+   ============================ */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.4); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ============================
+   SCROLL REVEAL ANIMATIONS
+   ============================ */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-fade-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================
+   STAGGER ANIMATION DELAYS
+   ============================ */
+.stagger-1 { transition-delay: 0ms; }
+.stagger-2 { transition-delay: 100ms; }
+.stagger-3 { transition-delay: 200ms; }
+.stagger-4 { transition-delay: 300ms; }
+.stagger-5 { transition-delay: 400ms; }
+.stagger-6 { transition-delay: 500ms; }
+.stagger-7 { transition-delay: 600ms; }
+.stagger-8 { transition-delay: 700ms; }
+
+/* ============================
+   MARQUEE ENHANCEMENTS
+   ============================ */
+.marquee-container {
+  position: relative;
+}
+
+/* Fade edges for smooth marquee effect */
+.marquee-fade-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background: linear-gradient(to right, white, transparent);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.marquee-fade-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background: linear-gradient(to left, white, transparent);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Navy background version */
+.marquee-fade-left-dark {
+  background: linear-gradient(to right, #0B1120, transparent);
+}
+
+.marquee-fade-right-dark {
+  background: linear-gradient(to left, #0B1120, transparent);
+}
+
+/* Pause on hover */
+.marquee-pause:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* ============================
+   ACCORDION ANIMATIONS
+   ============================ */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 300ms ease-in-out;
+}
+.accordion-content.open {
+  max-height: 200px;
+  padding-bottom: 16px;
+}
+
+.accordion-arrow {
+  transition: transform 300ms;
+}
+.accordion-open .accordion-arrow {
+  transform: rotate(180deg);
+}
+
+/* ============================
+   MODAL ANIMATIONS
+   ============================ */
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.animate-modal-in {
+  animation: modal-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.backdrop-blur-modal {
+  background: rgba(11, 17, 32, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+/* ============================
+   ICON HOVER EFFECTS
+   ============================ */
+.icon-bounce:hover {
+  animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* ============================
+   GRADIENT ANIMATIONS
+   ============================ */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 5s ease infinite;
+}
+
+/* ============================
+   TEXT SELECTION
+   ============================ */
+::selection {
+  background-color: #3B82F6;
+  color: white;
+}
+
+/* ============================
+   FOCUS STATES
+   ============================ */
+*:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}

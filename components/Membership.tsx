@@ -1,6 +1,11 @@
+"use client";
+
 import { Check, Shield, Clock, Wrench, Star } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function Membership() {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   const benefits = [
     "Priority scheduling & front-of-line access",
     "Annual whole-home plumbing inspection",
@@ -17,7 +22,7 @@ export default function Membership() {
   ];
 
   return (
-    <section id="membership" className="py-24 bg-gray-50 relative overflow-hidden">
+    <section id="membership" className="py-24 bg-gray-50 relative overflow-hidden" ref={ref}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
@@ -29,26 +34,42 @@ export default function Membership() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
           
           {/* Left Content */}
-          <div>
-            <div className="inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue px-4 py-2 rounded-full text-sm font-bold mb-6">
+          <div 
+            className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
+          >
+            <div 
+              className={`inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue px-4 py-2 rounded-full text-sm font-bold mb-6 transition-all duration-700 delay-100
+                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            >
               <Star className="w-4 h-4 fill-brand-blue" />
               Save up to $500/year
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-6 leading-tight">
+            <h2 
+              className={`text-4xl md:text-5xl font-bold text-navy-900 mb-6 leading-tight transition-all duration-700 delay-200
+                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            >
               Join The <br />
               <span className="text-brand-blue">Cornerstone Club</span>
             </h2>
             
-            <p className="text-gray-600 text-lg mb-10 leading-relaxed">
-              Get priority service, exclusive discounts, and peace of mind knowing your home's plumbing is always protected by Miami's most trusted team.
+            <p 
+              className={`text-gray-600 text-lg mb-10 leading-relaxed transition-all duration-700 delay-300
+                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            >
+              Get priority service, exclusive discounts, and peace of mind knowing your home&apos;s plumbing is always protected by Miami&apos;s most trusted team.
             </p>
 
             {/* Highlight Cards */}
             <div className="grid grid-cols-3 gap-4 mb-8">
               {highlights.map((item, idx) => (
-                <div key={idx} className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 text-center">
-                  <div className="w-10 h-10 bg-navy-900 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <div 
+                  key={idx} 
+                  className={`bg-white rounded-2xl p-4 shadow-sm border border-gray-100 text-center card-hover transition-all duration-700
+                    ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                  style={{ transitionDelay: `${idx * 100 + 400}ms` }}
+                >
+                  <div className="w-10 h-10 bg-navy-900 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-brand-blue transition-colors">
                     <item.icon className="w-5 h-5 text-brand-light" />
                   </div>
                   <p className="font-bold text-navy-900 text-sm">{item.label}</p>
@@ -58,7 +79,10 @@ export default function Membership() {
             </div>
 
             {/* Trust Badge */}
-            <div className="flex items-center gap-3 text-gray-500 text-sm">
+            <div 
+              className={`flex items-center gap-3 text-gray-500 text-sm transition-all duration-700 delay-700
+                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            >
               <div className="flex -space-x-2">
                 {[1,2,3,4].map(i => (
                   <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-blue to-navy-900 border-2 border-white flex items-center justify-center text-white text-xs font-bold">
@@ -71,15 +95,17 @@ export default function Membership() {
           </div>
 
           {/* Right: Pricing Card */}
-          <div className="relative">
+          <div 
+            className={`relative transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
+          >
             {/* Decorative blur */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-blue/20 rounded-full blur-3xl" />
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-blue/20 rounded-full blur-3xl animate-pulse-glow" />
             <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-navy-900/20 rounded-full blur-3xl" />
             
-            <div className="relative bg-navy-900 text-white rounded-[2rem] overflow-hidden shadow-2xl">
+            <div className="relative bg-navy-900 text-white rounded-[2rem] overflow-hidden shadow-2xl card-hover">
               {/* Popular Badge */}
               <div className="absolute top-6 right-6">
-                <span className="bg-brand-blue text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                <span className="bg-brand-blue text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider animate-pulse-glow">
                   Most Popular
                 </span>
               </div>
@@ -105,7 +131,12 @@ export default function Membership() {
                 {/* Benefits */}
                 <div className="space-y-4 mb-8">
                   {benefits.map((benefit, idx) => (
-                    <div key={idx} className="flex items-center gap-3">
+                    <div 
+                      key={idx} 
+                      className={`flex items-center gap-3 transition-all duration-500
+                        ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
+                      style={{ transitionDelay: `${idx * 75 + 600}ms` }}
+                    >
                       <div className="w-5 h-5 bg-brand-blue/20 rounded-full flex items-center justify-center flex-shrink-0">
                         <Check className="w-3 h-3 text-brand-light" strokeWidth={3} />
                       </div>
@@ -117,7 +148,7 @@ export default function Membership() {
                 {/* CTA */}
                 <a 
                   href="#contact" 
-                  className="block w-full text-center bg-brand-blue hover:bg-brand-light text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand-blue/30 hover:shadow-brand-blue/50 text-base hover:-translate-y-0.5"
+                  className="btn-primary block w-full text-center bg-brand-blue hover:bg-brand-light text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-blue/30 text-base"
                 >
                   Get Started Today
                 </a>

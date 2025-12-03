@@ -1,5 +1,7 @@
-import { Star, Quote, MessageSquarePlus } from "lucide-react";
-import Link from "next/link";
+"use client";
+
+import { Star, MessageSquarePlus } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Platform Icons
 const GoogleIcon = () => (
@@ -24,6 +26,8 @@ const FacebookIcon = () => (
 );
 
 export default function Testimonials() {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   const reviews = [
     {
       name: "Rogers Healy",
@@ -82,8 +86,12 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id="reviews" className="py-20 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <section id="reviews" className="py-20 bg-white overflow-hidden" ref={ref}>
+      {/* Header */}
+      <div 
+        className={`container mx-auto px-4 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 transition-all duration-700
+          ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         <div className="max-w-2xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-navy-900">Why Homeowners Love Cornerstone</h2>
           <div className="text-gray-600 text-lg flex flex-wrap items-center gap-2">
@@ -96,12 +104,12 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Leave a Review Button - Links to Google Reviews */}
+        {/* Leave a Review Button */}
         <a 
           href="https://g.page/r/CornerstonePlumbing/review" 
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-navy-900 hover:bg-brand-blue text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 whitespace-nowrap"
+          className="btn-primary inline-flex items-center gap-2 bg-navy-900 hover:bg-brand-blue text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md whitespace-nowrap"
         >
           <MessageSquarePlus className="w-4 h-4" />
           Leave a Review
@@ -109,21 +117,29 @@ export default function Testimonials() {
       </div>
 
       {/* Marquee Container */}
-      <div className="relative w-full">
+      <div 
+        className={`relative w-full marquee-pause transition-all duration-700 delay-300
+          ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      >
         {/* Gradient Masks for smooth fade effect */}
         <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-        <div className="flex gap-6 animate-marquee w-max px-4 hover:[animation-play-state:paused]">
+        <div className="flex gap-6 animate-marquee w-max px-4">
           {/* Render reviews twice for seamless loop */}
           {[...reviews, ...reviews].map((review, idx) => (
             <div 
               key={idx} 
-              className="w-[260px] md:w-[300px] bg-navy-900 p-6 rounded-3xl flex-shrink-0 relative group cursor-default shadow-xl transform transition-transform hover:scale-[1.02]"
+              className="w-[260px] md:w-[300px] bg-navy-900 p-6 rounded-3xl flex-shrink-0 relative group cursor-default shadow-xl card-hover card-border-glow"
             >
+              {/* Shimmer effect on hover */}
+              <div className="absolute inset-0 rounded-3xl overflow-hidden">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 animate-shimmer transition-opacity duration-500" />
+              </div>
+
               {/* Top Row: Platform Icon & Avatar */}
-              <div className="flex justify-between items-start mb-4">
-                <div className="p-1.5 bg-white rounded-full shadow-sm">
+              <div className="flex justify-between items-start mb-4 relative z-10">
+                <div className="p-1.5 bg-white rounded-full shadow-sm transform group-hover:scale-110 transition-transform duration-300">
                   {review.platform === 'google' && <GoogleIcon />}
                   {review.platform === 'yelp' && <YelpIcon />}
                   {review.platform === 'facebook' && <FacebookIcon />}
@@ -134,9 +150,13 @@ export default function Testimonials() {
               </div>
 
               {/* Stars */}
-              <div className="flex gap-0.5 text-white mb-4">
+              <div className="flex gap-0.5 text-white mb-4 relative z-10">
                 {[...Array(review.stars)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 fill-white text-white" />
+                  <Star 
+                    key={i} 
+                    className="w-3 h-3 fill-white text-white transition-transform duration-300"
+                    style={{ transitionDelay: `${i * 50}ms` }}
+                  />
                 ))}
               </div>
 
@@ -150,11 +170,11 @@ export default function Testimonials() {
 
               {/* Text */}
               <p className="text-gray-300 text-sm leading-relaxed mb-4 relative z-10 line-clamp-4">
-                "{review.text}"
+                &ldquo;{review.text}&rdquo;
               </p>
 
               {/* Date */}
-              <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest border-t border-white/10 pt-3">
+              <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest border-t border-white/10 pt-3 relative z-10">
                 {review.date}
               </div>
             </div>

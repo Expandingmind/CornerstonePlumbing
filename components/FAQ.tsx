@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { Plus, Minus, MessageSquare, Phone, HelpCircle } from "lucide-react";
 import Link from "next/link";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const faqs = [
     {
@@ -31,34 +33,54 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-24 bg-navy-900 relative overflow-hidden">
-      {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-brand-blue/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+    <section id="faq" className="py-24 bg-navy-900 relative overflow-hidden" ref={ref}>
+      {/* Background Decorations - Animated */}
+      <div 
+        className={`absolute top-0 left-0 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 transition-all duration-1000
+          ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
+      />
+      <div 
+        className={`absolute bottom-0 right-0 w-80 h-80 bg-brand-blue/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 transition-all duration-1000 delay-200
+          ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
+      />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 max-w-6xl mx-auto">
           
           {/* Left Content - 2 columns */}
-          <div className="lg:col-span-2">
+          <div 
+            className={`lg:col-span-2 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
+          >
             <div className="lg:sticky lg:top-32">
-              <div className="inline-flex items-center gap-2 bg-white/10 text-brand-light px-4 py-2 rounded-full text-sm font-bold mb-6 backdrop-blur-sm">
+              <div 
+                className={`inline-flex items-center gap-2 bg-white/10 text-brand-light px-4 py-2 rounded-full text-sm font-bold mb-6 backdrop-blur-sm transition-all duration-700 delay-100
+                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              >
                 <HelpCircle className="w-4 h-4" />
                 Got Questions?
               </div>
               
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              <h2 
+                className={`text-4xl md:text-5xl font-bold text-white mb-6 leading-tight transition-all duration-700 delay-200
+                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              >
                 Frequently Asked <span className="text-brand-light">Questions</span>
               </h2>
               
-              <p className="text-gray-400 text-lg mb-10 leading-relaxed">
-                Everything you need to know about our plumbing services. Can't find what you're looking for? We're here to help.
+              <p 
+                className={`text-gray-400 text-lg mb-10 leading-relaxed transition-all duration-700 delay-300
+                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              >
+                Everything you need to know about our plumbing services. Can&apos;t find what you&apos;re looking for? We&apos;re here to help.
               </p>
 
               {/* Contact Card */}
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
+              <div 
+                className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 card-hover card-border-glow transition-all duration-700 delay-400
+                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-brand-blue rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-brand-blue rounded-xl flex items-center justify-center flex-shrink-0 animate-pulse-glow">
                     <MessageSquare className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -67,14 +89,14 @@ export default function FAQ() {
                     <div className="flex flex-wrap gap-3">
                       <a 
                         href="tel:3058487178" 
-                        className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-light text-white px-4 py-2 rounded-lg text-sm font-bold transition-all"
+                        className="btn-primary inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-light text-white px-4 py-2 rounded-lg text-sm font-bold"
                       >
                         <Phone className="w-4 h-4" />
                         Call Us
                       </a>
                       <Link 
                         href="#contact" 
-                        className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-bold transition-all"
+                        className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300"
                       >
                         Send Message
                       </Link>
@@ -86,22 +108,25 @@ export default function FAQ() {
           </div>
 
           {/* Right: FAQ Accordion - 3 columns */}
-          <div className="lg:col-span-3 space-y-4">
+          <div 
+            className={`lg:col-span-3 space-y-4 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
+          >
             {faqs.map((faq, idx) => (
               <div 
                 key={idx} 
-                className={`rounded-2xl transition-all duration-300 ${
+                className={`rounded-2xl transition-all duration-300 cursor-pointer ${
                   openIndex === idx 
                     ? 'bg-white shadow-xl shadow-black/10' 
                     : 'bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10'
-                }`}
+                } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${idx * 75 + 400}ms` }}
               >
                 <button
                   className="w-full flex items-start gap-4 p-6 text-left"
                   onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                 >
                   {/* Number Badge */}
-                  <span className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold transition-colors ${
+                  <span className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold transition-all duration-300 ${
                     openIndex === idx 
                       ? 'bg-brand-blue text-white' 
                       : 'bg-white/10 text-gray-400'
@@ -110,7 +135,7 @@ export default function FAQ() {
                   </span>
                   
                   <div className="flex-grow">
-                    <span className={`font-bold text-lg block transition-colors ${
+                    <span className={`font-bold text-lg block transition-colors duration-300 ${
                       openIndex === idx ? 'text-navy-900' : 'text-white'
                     }`}>
                       {faq.question}
@@ -129,16 +154,18 @@ export default function FAQ() {
                   </div>
 
                   {/* Toggle Icon */}
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
                     openIndex === idx 
-                      ? 'bg-navy-900 text-white rotate-0' 
+                      ? 'bg-navy-900 text-white' 
                       : 'bg-white/10 text-gray-400'
                   }`}>
-                    {openIndex === idx ? (
-                      <Minus className="w-4 h-4" />
-                    ) : (
-                      <Plus className="w-4 h-4" />
-                    )}
+                    <div className={`transition-transform duration-300 ${openIndex === idx ? 'rotate-0' : ''}`}>
+                      {openIndex === idx ? (
+                        <Minus className="w-4 h-4" />
+                      ) : (
+                        <Plus className="w-4 h-4" />
+                      )}
+                    </div>
                   </div>
                 </button>
               </div>
