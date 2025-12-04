@@ -41,7 +41,7 @@ export default function Footer() {
           >
             <Link href="/" className="inline-flex items-center gap-3 mb-6 group">
               {/* Logo */}
-              <div className="relative w-[72px] h-[72px] flex-shrink-0">
+              <div className="relative w-24 h-24 flex-shrink-0">
                 <Image
                   src="/images/services/logoo.png"
                   alt="Cornerstone Plumbing Logo"

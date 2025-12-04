@@ -61,7 +61,7 @@ export default function Header() {
           {/* Logo + Name */}
           <Link href="/" className="flex-shrink-0 group flex items-center gap-2 md:gap-3">
             {/* Logo Image */}
-            <div className="relative w-[60px] h-[60px] md:w-[72px] md:h-[72px] flex-shrink-0">
+            <div className="relative w-20 h-20 md:w-24 md:h-24 flex-shrink-0">
               <Image
                 src="/images/services/logoo.png"
                 alt="Cornerstone Plumbing Logo"
