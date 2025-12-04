@@ -43,7 +43,7 @@ export default function Footer() {
               {/* Logo */}
               <div className="relative w-12 h-12 flex-shrink-0">
                 <Image
-                  src="/images/services/logo.png"
+                  src="/images/services/logoo.png"
                   alt="Cornerstone Plumbing Logo"
                   fill
                   className="object-contain"

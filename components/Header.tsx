@@ -63,7 +63,7 @@ export default function Header() {
             {/* Logo Image */}
             <div className="relative w-10 h-10 md:w-12 md:h-12 flex-shrink-0">
               <Image
-                src="/images/services/logo.png"
+                src="/images/services/logoo.png"
                 alt="Cornerstone Plumbing Logo"
                 fill
                 className="object-contain"
