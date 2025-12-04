@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -57,9 +58,20 @@ export default function Header() {
         }`}
       >
         <div className="container mx-auto px-4 lg:px-8 h-20 flex items-center justify-between gap-4">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0 group">
-            <span className="text-xl lg:text-2xl font-bold tracking-tight whitespace-nowrap">
+          {/* Logo + Name */}
+          <Link href="/" className="flex-shrink-0 group flex items-center gap-2 md:gap-3">
+            {/* Logo Image */}
+            <div className="relative w-10 h-10 md:w-12 md:h-12 flex-shrink-0">
+              <Image
+                src="/images/services/logo.png"
+                alt="Cornerstone Plumbing Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            {/* Company Name */}
+            <span className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight whitespace-nowrap">
               Cornerstone <span className="text-brand-blue group-hover:text-brand-light transition-colors duration-300">Plumbing</span>
             </span>
           </Link>

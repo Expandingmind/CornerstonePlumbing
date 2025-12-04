@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -38,8 +39,19 @@ export default function Footer() {
           <div 
             className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            <Link href="/" className="inline-block text-2xl font-bold tracking-tight mb-6 group">
-              Cornerstone <span className="text-brand-blue group-hover:text-brand-light transition-colors">Plumbing</span>
+            <Link href="/" className="inline-flex items-center gap-3 mb-6 group">
+              {/* Logo */}
+              <div className="relative w-12 h-12 flex-shrink-0">
+                <Image
+                  src="/images/services/logo.png"
+                  alt="Cornerstone Plumbing Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <span className="text-xl font-bold tracking-tight">
+                Cornerstone <span className="text-brand-blue group-hover:text-brand-light transition-colors">Plumbing</span>
+              </span>
             </Link>
             <p className="text-gray-400 leading-relaxed mb-6">
               The foundation of reliable plumbing in Miami. Family-owned, trustworthy, and ready to serve you 24/7.
