@@ -22,8 +22,8 @@ export default function ServicePageContent({ service, relatedServices }: Service
     <main className="min-h-screen bg-white selection:bg-brand-blue selection:text-white">
       <Header />
       
-      {/* Hero Section */}
-      <section className="relative bg-navy-900 overflow-hidden pt-20 pb-32">
+      {/* Hero Section - Compact on mobile */}
+      <section className="relative bg-navy-900 overflow-hidden pt-12 pb-16 md:pt-20 md:pb-32">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <Image
@@ -36,27 +36,27 @@ export default function ServicePageContent({ service, relatedServices }: Service
           <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/95 to-navy-900/80" />
         </div>
 
-        {/* Abstract Shape */}
+        {/* Abstract Shape - Smaller on mobile */}
         <div 
-          className={`absolute top-0 right-0 w-[80vh] h-[80vh] bg-brand-blue/20 rounded-full blur-3xl transition-all duration-1000 ease-out
-            ${isLoaded ? 'opacity-100 translate-x-[20%] -translate-y-[30%]' : 'opacity-0 translate-x-[40%] -translate-y-[50%]'}`}
+          className={`absolute top-0 right-0 w-[50vh] md:w-[80vh] h-[50vh] md:h-[80vh] bg-brand-blue/20 rounded-full blur-3xl transition-all duration-1000 ease-out
+            ${isLoaded ? 'opacity-100 translate-x-[30%] -translate-y-[40%] md:translate-x-[20%] md:-translate-y-[30%]' : 'opacity-0 translate-x-[40%] -translate-y-[50%]'}`}
         />
 
         <div className="container mx-auto px-4 relative z-10">
           {/* Back Link */}
           <Link 
             href="/#services" 
-            className={`inline-flex items-center gap-2 text-brand-light hover:text-white transition-all duration-300 mb-8 group
+            className={`inline-flex items-center gap-2 text-brand-light hover:text-white transition-all duration-300 mb-4 md:mb-8 group text-sm md:text-base
               ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
           >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft className="w-3 h-3 md:w-4 md:h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Services
           </Link>
 
           <div className="max-w-3xl">
             {/* Badge */}
             <div 
-              className={`inline-block bg-brand-blue/20 text-brand-light px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6 transition-all duration-700 delay-100
+              className={`inline-block bg-brand-blue/20 text-brand-light px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-bold uppercase tracking-wider mb-4 md:mb-6 transition-all duration-700 delay-100
                 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
             >
               Professional Service
@@ -64,7 +64,7 @@ export default function ServicePageContent({ service, relatedServices }: Service
 
             {/* Title */}
             <h1 
-              className={`text-4xl md:text-6xl font-bold text-white mb-6 leading-tight transition-all duration-700 delay-200
+              className={`text-2xl md:text-6xl font-bold text-white mb-3 md:mb-6 leading-tight transition-all duration-700 delay-200
                 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
               {service.name}
@@ -72,28 +72,28 @@ export default function ServicePageContent({ service, relatedServices }: Service
 
             {/* Description */}
             <p 
-              className={`text-xl text-gray-300 mb-10 leading-relaxed transition-all duration-700 delay-300
+              className={`text-sm md:text-xl text-gray-300 mb-6 md:mb-10 leading-relaxed transition-all duration-700 delay-300
                 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
               {service.shortDescription}
             </p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Stack on mobile */}
             <div 
-              className={`flex flex-wrap gap-4 transition-all duration-700 delay-400
+              className={`flex flex-col sm:flex-row gap-3 md:gap-4 transition-all duration-700 delay-400
                 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
               <Link 
                 href="/#contact" 
-                className="btn-primary bg-brand-blue hover:bg-brand-light text-white px-8 py-4 rounded-full font-bold shadow-lg"
+                className="btn-primary bg-white text-navy-900 md:bg-brand-blue md:text-white hover:bg-gray-100 md:hover:bg-brand-light px-6 py-3 md:px-8 md:py-4 rounded-full font-bold shadow-lg text-center text-sm md:text-base"
               >
                 Get a Free Quote
               </Link>
               <a 
                 href="tel:3058487178" 
-                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full font-bold transition-all"
+                className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold transition-all text-sm md:text-base"
               >
-                <Phone className="w-5 h-5" />
+                <Phone className="w-4 h-4 md:w-5 md:h-5" />
                 (305) 848-7178
               </a>
             </div>
@@ -101,50 +101,69 @@ export default function ServicePageContent({ service, relatedServices }: Service
         </div>
       </section>
 
+      {/* Mobile Contact Sticky Bar */}
+      <div className="lg:hidden sticky top-[80px] z-30 bg-navy-900 border-b border-white/10 px-4 py-3">
+        <div className="flex gap-2">
+          <a 
+            href="tel:3058487178" 
+            className="flex-1 flex items-center justify-center gap-2 bg-white/10 text-white py-2.5 rounded-lg font-bold text-sm"
+          >
+            <Phone className="w-4 h-4" />
+            Call Now
+          </a>
+          <Link 
+            href="/#contact" 
+            className="flex-1 bg-brand-blue text-white py-2.5 rounded-lg font-bold text-sm text-center"
+          >
+            Get Quote
+          </Link>
+        </div>
+      </div>
+
       {/* Main Content */}
-      <section className="py-20">
+      <section className="py-10 md:py-20">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto">
             
             {/* Left Content - 2 cols */}
             <div className="lg:col-span-2">
               {/* Description */}
-              <div className="mb-16">
-                <h2 className="text-3xl font-bold text-navy-900 mb-6">About This Service</h2>
-                <p className="text-gray-600 text-lg leading-relaxed">
+              <div className="mb-10 md:mb-16">
+                <h2 className="text-xl md:text-3xl font-bold text-navy-900 mb-4 md:mb-6">About This Service</h2>
+                <p className="text-gray-600 text-sm md:text-lg leading-relaxed">
                   {service.description}
                 </p>
               </div>
 
               {/* Features */}
-              <div className="mb-16">
-                <h2 className="text-3xl font-bold text-navy-900 mb-6">What We Offer</h2>
-                <div className="grid sm:grid-cols-2 gap-4">
+              <div className="mb-10 md:mb-16">
+                <h2 className="text-xl md:text-3xl font-bold text-navy-900 mb-4 md:mb-6">What We Offer</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
                   {service.features.map((feature, idx) => (
                     <div 
                       key={idx} 
-                      className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl hover:bg-brand-blue/5 transition-colors"
+                      className="flex items-start gap-2 md:gap-3 p-3 md:p-4 bg-gray-50 rounded-lg md:rounded-xl hover:bg-brand-blue/5 transition-colors"
                     >
-                      <div className="w-6 h-6 bg-brand-blue/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-4 h-4 text-brand-blue" strokeWidth={3} />
+                      <div className="w-5 h-5 md:w-6 md:h-6 bg-brand-blue/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 md:w-4 md:h-4 text-brand-blue" strokeWidth={3} />
                       </div>
-                      <span className="text-navy-900 font-medium">{feature}</span>
+                      <span className="text-navy-900 font-medium text-sm md:text-base">{feature}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Benefits */}
-              <div className="mb-16">
-                <h2 className="text-3xl font-bold text-navy-900 mb-6">Why Choose Us</h2>
-                <div className="space-y-6">
+              <div className="mb-10 md:mb-16">
+                <h2 className="text-xl md:text-3xl font-bold text-navy-900 mb-4 md:mb-6">Why Choose Us</h2>
+                <div className="space-y-3 md:space-y-6">
                   {service.benefits.map((benefit, idx) => (
                     <div 
                       key={idx} 
-                      className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all card-hover"
+                      className="bg-white border border-gray-100 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-sm hover:shadow-lg transition-all card-hover"
                     >
-                      <h3 className="text-xl font-bold text-navy-900 mb-2">{benefit.title}</h3>
-                      <p className="text-gray-600">{benefit.description}</p>
+                      <h3 className="text-base md:text-xl font-bold text-navy-900 mb-1 md:mb-2">{benefit.title}</h3>
+                      <p className="text-gray-600 text-sm md:text-base">{benefit.description}</p>
                     </div>
                   ))}
                 </div>
@@ -152,34 +171,34 @@ export default function ServicePageContent({ service, relatedServices }: Service
 
               {/* FAQs */}
               <div>
-                <h2 className="text-3xl font-bold text-navy-900 mb-6">Common Questions</h2>
-                <div className="space-y-4">
+                <h2 className="text-xl md:text-3xl font-bold text-navy-900 mb-4 md:mb-6">Common Questions</h2>
+                <div className="space-y-2 md:space-y-4">
                   {service.faqs.map((faq, idx) => (
                     <div 
                       key={idx} 
-                      className={`rounded-2xl overflow-hidden transition-all duration-300 ${
+                      className={`rounded-xl md:rounded-2xl overflow-hidden transition-all duration-300 ${
                         openFaq === idx 
                           ? 'bg-navy-900 text-white' 
                           : 'bg-gray-50 hover:bg-gray-100'
                       }`}
                     >
                       <button
-                        className="w-full flex items-center justify-between p-6 text-left"
+                        className="w-full flex items-center justify-between p-4 md:p-6 text-left"
                         onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
                       >
-                        <span className={`font-bold text-lg pr-4 ${openFaq === idx ? 'text-white' : 'text-navy-900'}`}>
+                        <span className={`font-bold text-sm md:text-lg pr-3 md:pr-4 ${openFaq === idx ? 'text-white' : 'text-navy-900'}`}>
                           {faq.question}
                         </span>
-                        <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                        <div className={`flex-shrink-0 w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all ${
                           openFaq === idx ? 'bg-brand-blue text-white' : 'bg-white text-navy-900 shadow-sm'
                         }`}>
-                          {openFaq === idx ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                          {openFaq === idx ? <ChevronUp className="w-4 h-4 md:w-5 md:h-5" /> : <ChevronDown className="w-4 h-4 md:w-5 md:h-5" />}
                         </div>
                       </button>
                       <div className={`overflow-hidden transition-all duration-300 ${
-                        openFaq === idx ? 'max-h-40 pb-6' : 'max-h-0'
+                        openFaq === idx ? 'max-h-40 pb-4 md:pb-6' : 'max-h-0'
                       }`}>
-                        <p className={`px-6 leading-relaxed ${openFaq === idx ? 'text-gray-300' : 'text-gray-600'}`}>
+                        <p className={`px-4 md:px-6 leading-relaxed text-sm md:text-base ${openFaq === idx ? 'text-gray-300' : 'text-gray-600'}`}>
                           {faq.answer}
                         </p>
                       </div>
@@ -189,8 +208,8 @@ export default function ServicePageContent({ service, relatedServices }: Service
               </div>
             </div>
 
-            {/* Right Sidebar - 1 col */}
-            <div className="lg:col-span-1">
+            {/* Right Sidebar - Hidden on mobile, shown on desktop */}
+            <div className="hidden lg:block lg:col-span-1">
               <div className="sticky top-28 space-y-6">
                 {/* Contact Card */}
                 <div className="bg-navy-900 text-white rounded-3xl p-8 shadow-xl">
@@ -241,22 +260,23 @@ export default function ServicePageContent({ service, relatedServices }: Service
         </div>
       </section>
 
-      {/* Related Services */}
-      <section className="py-20 bg-gray-50">
+      {/* Related Services - Horizontal scroll on mobile */}
+      <section className="py-10 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy-900 mb-4">Other Services You May Need</h2>
-            <p className="text-gray-500">Explore more of our professional plumbing services</p>
+          <div className="text-center mb-6 md:mb-12">
+            <h2 className="text-xl md:text-3xl font-bold text-navy-900 mb-2 md:mb-4">Other Services You May Need</h2>
+            <p className="text-gray-500 text-sm md:text-base">Explore more of our professional plumbing services</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {/* Horizontal scroll on mobile, grid on desktop */}
+          <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 max-w-5xl mx-auto overflow-x-auto pb-4 md:pb-0 -mx-4 px-4 md:mx-auto hide-scrollbar">
             {relatedServices.map((related, idx) => (
               <Link 
                 key={idx}
                 href={`/services/${related.slug}`}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all card-hover card-image-zoom group"
+                className="bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all card-hover card-image-zoom group flex-shrink-0 w-[240px] md:w-auto"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-32 md:h-48 overflow-hidden">
                   <Image
                     src={related.image}
                     alt={related.name}
@@ -265,13 +285,13 @@ export default function ServicePageContent({ service, relatedServices }: Service
                   />
                   <div className="absolute inset-0 bg-navy-900/0 group-hover:bg-navy-900/20 transition-colors" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-navy-900 mb-2 group-hover:text-brand-blue transition-colors">
+                <div className="p-4 md:p-6">
+                  <h3 className="text-sm md:text-xl font-bold text-navy-900 mb-1 md:mb-2 group-hover:text-brand-blue transition-colors line-clamp-1">
                     {related.name}
                   </h3>
-                  <p className="text-gray-500 text-sm mb-4">{related.shortDescription}</p>
-                  <span className="inline-flex items-center gap-2 text-brand-blue font-bold text-sm">
-                    Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <p className="text-gray-500 text-xs md:text-sm mb-2 md:mb-4 line-clamp-2">{related.shortDescription}</p>
+                  <span className="inline-flex items-center gap-1 md:gap-2 text-brand-blue font-bold text-xs md:text-sm">
+                    Learn More <ArrowRight className="w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>
               </Link>
@@ -280,25 +300,25 @@ export default function ServicePageContent({ service, relatedServices }: Service
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-brand-blue">
+      {/* CTA Section - Compact on mobile */}
+      <section className="py-10 md:py-20 bg-brand-blue">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="text-xl md:text-4xl font-bold text-white mb-3 md:mb-6">
             Need {service.name} Help Today?
           </h2>
-          <p className="text-white/90 text-lg mb-10 max-w-2xl mx-auto">
-            Our expert plumbers are standing by to help. Call now for same-day service or schedule online at your convenience.
+          <p className="text-white/90 text-sm md:text-lg mb-6 md:mb-10 max-w-2xl mx-auto">
+            Our expert plumbers are standing by. Call now for same-day service.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
             <a 
               href="tel:3058487178" 
-              className="btn-primary bg-white text-brand-blue hover:bg-gray-100 px-10 py-4 rounded-full font-bold shadow-lg"
+              className="btn-primary bg-white text-brand-blue hover:bg-gray-100 px-6 py-3 md:px-10 md:py-4 rounded-full font-bold shadow-lg text-sm md:text-base"
             >
               Call (305) 848-7178
             </a>
             <Link 
               href="/#contact" 
-              className="bg-navy-900 text-white hover:bg-navy-800 px-10 py-4 rounded-full font-bold shadow-lg transition-all"
+              className="bg-navy-900 text-white hover:bg-navy-800 px-6 py-3 md:px-10 md:py-4 rounded-full font-bold shadow-lg transition-all text-sm md:text-base"
             >
               Schedule Online
             </Link>
@@ -310,4 +330,3 @@ export default function ServicePageContent({ service, relatedServices }: Service
     </main>
   );
 }
-
