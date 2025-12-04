@@ -24,28 +24,28 @@ export default function Hero() {
   const isLoaded = usePageLoadAnimation(100);
 
   return (
-    <section className="relative bg-navy-900 overflow-hidden pt-8 pb-16 md:pt-32 md:pb-48 min-h-[70vh] md:min-h-[85vh] flex items-center">
-      {/* Large Abstract Circle/Shape Background - Animated */}
+    <section className="relative bg-navy-900 overflow-hidden pt-8 pb-12 md:pt-32 md:pb-48 min-h-[65vh] md:min-h-[85vh] flex items-center">
+      {/* Large Abstract Circle/Shape Background - Positioned higher on mobile */}
       <div 
-        className={`absolute top-0 right-0 w-[100vh] md:w-[140vh] h-[100vh] md:h-[140vh] bg-brand-blue rounded-full z-0 transform transition-all duration-1000 ease-out-expo
+        className={`absolute top-0 right-0 w-[80vh] md:w-[140vh] h-[80vh] md:h-[140vh] bg-brand-blue rounded-full z-0 transform transition-all duration-1000 ease-out-expo
           ${isLoaded 
-            ? 'opacity-100 translate-x-[40%] -translate-y-[30%] md:translate-x-[15%] md:-translate-y-[25%]' 
-            : 'opacity-0 translate-x-[50%] -translate-y-[40%]'
+            ? 'opacity-100 translate-x-[50%] -translate-y-[50%] md:translate-x-[15%] md:-translate-y-[25%]' 
+            : 'opacity-0 translate-x-[60%] -translate-y-[60%]'
           }`} 
       />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10 h-full">
-        <div className="max-w-2xl pt-6 md:pt-10">
+        <div className="max-w-2xl pt-4 md:pt-10">
           {/* Eyebrow - Stagger 1 */}
           <div 
-            className={`text-gray-300 text-xs md:text-base font-medium mb-4 md:mb-6 tracking-wide uppercase transition-all duration-700 delay-100
+            className={`text-gray-300 text-xs md:text-base font-medium mb-3 md:mb-6 tracking-wide uppercase transition-all duration-700 delay-100
               ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             Residential Plumbing Service in Miami
           </div>
           
           {/* Headline - Stagger 2, 3, 4 */}
-          <h1 className="text-3xl md:text-7xl font-bold text-white leading-[1.1] mb-6 md:mb-8 tracking-tight">
+          <h1 className="text-3xl md:text-7xl font-bold text-white leading-[1.1] mb-4 md:mb-8 tracking-tight">
             <span 
               className={`block transition-all duration-700 delay-200
                 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -68,7 +68,7 @@ export default function Hero() {
           
           {/* Paragraph - Stagger 5 */}
           <p 
-            className={`text-sm md:text-lg text-gray-300 mb-8 md:mb-10 max-w-lg leading-relaxed font-light transition-all duration-700 delay-500
+            className={`text-sm md:text-lg text-gray-300 mb-6 md:mb-10 max-w-lg leading-relaxed font-light transition-all duration-700 delay-500
               ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             When plumbing breaks, it&apos;s stressful. Our team will fix your 
@@ -76,22 +76,22 @@ export default function Hero() {
             way. Your peace of mind is our goal.
           </p>
           
-          {/* Button - Stagger 6 */}
+          {/* Button - Stagger 6 - WHITE on mobile for visibility */}
           <div 
-            className={`flex flex-wrap gap-3 md:gap-4 mb-8 md:mb-12 transition-all duration-700 delay-[600ms]
+            className={`flex flex-wrap gap-3 md:gap-4 mb-6 md:mb-12 transition-all duration-700 delay-[600ms]
               ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             <Link 
               href="#contact" 
-              className="btn-primary bg-brand-blue hover:bg-brand-light text-white px-6 py-3 md:px-10 md:py-4 rounded-full text-sm md:text-lg font-bold shadow-lg hover:shadow-xl"
+              className="btn-primary bg-white text-navy-900 hover:bg-gray-100 md:bg-brand-blue md:hover:bg-brand-light md:text-white px-6 py-3 md:px-10 md:py-4 rounded-full text-sm md:text-lg font-bold shadow-lg hover:shadow-xl"
             >
               Book a Plumber Now
             </Link>
           </div>
 
-          {/* Reviews Strip - Stagger 7 */}
+          {/* Reviews Strip - Stagger 7 - Higher z-index and better positioning */}
           <div 
-            className={`flex flex-wrap items-center gap-4 md:gap-12 pt-4 border-t border-white/10 transition-all duration-700 delay-700
+            className={`flex flex-wrap items-center gap-4 md:gap-12 pt-4 border-t border-white/20 bg-navy-900/80 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none -mx-4 px-4 md:mx-0 md:px-0 transition-all duration-700 delay-700
               ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             {/* Google */}

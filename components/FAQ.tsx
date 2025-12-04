@@ -11,45 +11,62 @@ export default function FAQ() {
 
   const faqs = [
     {
-      question: "Do you offer 24/7 emergency plumbing services?",
-      answer: "Yes! We have plumbers on call 24 hours a day, 7 days a week for emergencies in Miami and surrounding areas. Call us anytime at (305) 848-7178."
+      question: "Do you offer 24/7 emergency plumbing?",
+      answer: "Yes! We have plumbers on call 24/7 for emergencies in Miami. Call us anytime at (305) 848-7178."
     },
     {
       question: "Are your plumbers licensed and insured?",
-      answer: "Absolutely. Cornerstone Plumbing is fully licensed, bonded, and insured in the state of Florida. Our technicians undergo rigorous training and background checks."
+      answer: "Absolutely. Cornerstone Plumbing is fully licensed, bonded, and insured in Florida."
     },
     {
-      question: "What areas do you serve around Miami?",
-      answer: "We serve all of Miami-Dade County including Brickell, Coral Gables, Miami Beach, Kendall, Coconut Grove, and Doral."
+      question: "What areas do you serve?",
+      answer: "We serve Miami-Dade County including Brickell, Coral Gables, Miami Beach, Kendall, and Doral."
     },
     {
       question: "What payment methods do you accept?",
-      answer: "We accept all major credit cards, cash, checks, and offer financing options for larger repairs or installations."
+      answer: "We accept all major credit cards, cash, checks, and offer financing options."
     },
     {
       question: "Do you guarantee your work?",
-      answer: "Yes, we stand behind our work with a 100% satisfaction guarantee. If you're not happy with the repair, we'll make it right."
+      answer: "Yes, we stand behind our work with a 100% satisfaction guarantee."
     }
   ];
 
   return (
-    <section id="faq" className="py-24 bg-navy-900 relative overflow-hidden" ref={ref}>
+    <section id="faq" className="py-12 md:py-24 bg-navy-900 relative overflow-hidden" ref={ref}>
       {/* Background Decorations - Animated */}
       <div 
-        className={`absolute top-0 left-0 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 transition-all duration-1000
+        className={`absolute top-0 left-0 w-48 md:w-96 h-48 md:h-96 bg-brand-blue/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 transition-all duration-1000
           ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
       />
       <div 
-        className={`absolute bottom-0 right-0 w-80 h-80 bg-brand-blue/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 transition-all duration-1000 delay-200
+        className={`absolute bottom-0 right-0 w-40 md:w-80 h-40 md:h-80 bg-brand-blue/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 transition-all duration-1000 delay-200
           ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
       />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 max-w-6xl mx-auto">
-          
-          {/* Left Content - 2 columns */}
+        {/* Mobile Header */}
+        <div className="lg:hidden text-center mb-6">
           <div 
-            className={`lg:col-span-2 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
+            className={`inline-flex items-center gap-2 bg-white/10 text-brand-light px-3 py-1.5 rounded-full text-xs font-bold mb-3 backdrop-blur-sm transition-all duration-700 delay-100
+              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            <HelpCircle className="w-3 h-3" />
+            Got Questions?
+          </div>
+          <h2 
+            className={`text-2xl font-bold text-white mb-2 transition-all duration-700 delay-200
+              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            Frequently Asked <span className="text-brand-light">Questions</span>
+          </h2>
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-6 lg:gap-16 max-w-6xl mx-auto">
+          
+          {/* Left Content - Hidden on mobile, shown on desktop */}
+          <div 
+            className={`hidden lg:block lg:col-span-2 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
           >
             <div className="lg:sticky lg:top-32">
               <div 
@@ -107,14 +124,14 @@ export default function FAQ() {
             </div>
           </div>
 
-          {/* Right: FAQ Accordion - 3 columns */}
+          {/* Right: FAQ Accordion - Full width on mobile */}
           <div 
-            className={`lg:col-span-3 space-y-4 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
+            className={`lg:col-span-3 space-y-2 md:space-y-4 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
           >
             {faqs.map((faq, idx) => (
               <div 
                 key={idx} 
-                className={`rounded-2xl transition-all duration-300 cursor-pointer ${
+                className={`rounded-xl md:rounded-2xl transition-all duration-300 cursor-pointer ${
                   openIndex === idx 
                     ? 'bg-white shadow-xl shadow-black/10' 
                     : 'bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10'
@@ -122,11 +139,11 @@ export default function FAQ() {
                 style={{ transitionDelay: `${idx * 75 + 400}ms` }}
               >
                 <button
-                  className="w-full flex items-start gap-4 p-6 text-left"
+                  className="w-full flex items-start gap-2 md:gap-4 p-4 md:p-6 text-left"
                   onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                 >
                   {/* Number Badge */}
-                  <span className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold transition-all duration-300 ${
+                  <span className={`flex-shrink-0 w-6 h-6 md:w-8 md:h-8 rounded-lg flex items-center justify-center text-xs md:text-sm font-bold transition-all duration-300 ${
                     openIndex === idx 
                       ? 'bg-brand-blue text-white' 
                       : 'bg-white/10 text-gray-400'
@@ -134,8 +151,8 @@ export default function FAQ() {
                     {String(idx + 1).padStart(2, '0')}
                   </span>
                   
-                  <div className="flex-grow">
-                    <span className={`font-bold text-lg block transition-colors duration-300 ${
+                  <div className="flex-grow min-w-0">
+                    <span className={`font-bold text-sm md:text-lg block transition-colors duration-300 ${
                       openIndex === idx ? 'text-navy-900' : 'text-white'
                     }`}>
                       {faq.question}
@@ -144,32 +161,41 @@ export default function FAQ() {
                     {/* Answer */}
                     <div 
                       className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                        openIndex === idx ? 'max-h-40 opacity-100 mt-3' : 'max-h-0 opacity-0'
+                        openIndex === idx ? 'max-h-32 md:max-h-40 opacity-100 mt-2 md:mt-3' : 'max-h-0 opacity-0'
                       }`}
                     >
-                      <p className="text-gray-500 leading-relaxed">
+                      <p className="text-gray-500 text-xs md:text-base leading-relaxed">
                         {faq.answer}
                       </p>
                     </div>
                   </div>
 
                   {/* Toggle Icon */}
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                  <div className={`flex-shrink-0 w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
                     openIndex === idx 
                       ? 'bg-navy-900 text-white' 
                       : 'bg-white/10 text-gray-400'
                   }`}>
-                    <div className={`transition-transform duration-300 ${openIndex === idx ? 'rotate-0' : ''}`}>
-                      {openIndex === idx ? (
-                        <Minus className="w-4 h-4" />
-                      ) : (
-                        <Plus className="w-4 h-4" />
-                      )}
-                    </div>
+                    {openIndex === idx ? (
+                      <Minus className="w-3 h-3 md:w-4 md:h-4" />
+                    ) : (
+                      <Plus className="w-3 h-3 md:w-4 md:h-4" />
+                    )}
                   </div>
                 </button>
               </div>
             ))}
+          </div>
+
+          {/* Mobile Contact Card - Below FAQ on mobile */}
+          <div className="lg:hidden mt-4">
+            <a 
+              href="tel:3058487178" 
+              className="flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-light text-white px-4 py-3 rounded-xl text-sm font-bold transition-all w-full"
+            >
+              <Phone className="w-4 h-4" />
+              Still have questions? Call Us
+            </a>
           </div>
         </div>
       </div>
